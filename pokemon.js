@@ -12,7 +12,7 @@ class Pokemon {
 
   takeDamage(amount) {
     this.hp -= amount;
-    if (this.hasFainted()) this.hp = 0
+    if (this.hasFainted()) this.hp = 0;
   }
 
   useMove() {
@@ -21,6 +21,12 @@ class Pokemon {
 
   hasFainted() {
     return this.hp <= 0;
+  }
+  isEffectiveAgainst({ type }) {
+    return this.effectiveAgainst.includes(type);
+  }
+  isWeakTo({ type }) {
+    return this.weakTo.includes(type);
   }
 }
 
