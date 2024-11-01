@@ -2,19 +2,25 @@ class Pokemon {
   constructor(name, hp, atk, move = "tackle") {
     if (this.constructor === Pokemon) {
       throw new Error("Cannot instantiate abstract class!");
+    } else {
+      this.name = name;
+      this.hp = hp;
+      this.atk = atk;
+      this.move = move;
     }
   }
 
-  takeDamage() {
-    throw new Error("Abstract method must be overwritten by subclass!");
+  takeDamage(amount) {
+    this.hp -= amount;
+    if (this.hasFainted()) this.hp = 0
   }
 
   useMove() {
-    throw new Error("Abstract method must be overwritten by subclass!");
+    return this.atk;
   }
 
   hasFainted() {
-    throw new Error("Abstract method must be overwritten by subclass!");
+    return this.hp <= 0;
   }
 }
 
