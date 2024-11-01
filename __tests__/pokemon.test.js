@@ -16,6 +16,15 @@ describe("Pokemon class", () => {
     const pokemon = new TestPokemon();
     expect(pokemon).toBeInstanceOf(Pokemon);
   });
+  it("has a default move of tackle on children", () => {
+    class TestPokemon extends Pokemon {
+      constructor(name, hp, atk, move) {
+        super(name, hp, atk, move);
+      }
+    }
+    const pokemon = new TestPokemon();
+    expect(pokemon.move).toBe("tackle");
+  });
   it("has takeDamage method which reduces the pokemon hp by given amount", () => {
     class TestPokemon extends Pokemon {
       constructor(name, hp, atk, move) {
